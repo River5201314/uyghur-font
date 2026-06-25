@@ -4,7 +4,7 @@
 
 ## 在线预览
 
-> 打开 [`index.html`](index.html) 查看三种文字和混合排版的交互式预览效果。
+> 打开 [`index.html`](https://uifont.netlify.app/) 查看三种文字和混合排版的交互式预览效果。
 
 ## 字体信息
 
