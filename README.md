@@ -11,7 +11,7 @@
 | 属性 | 值 |
 |---|---|
 | 字体名称 | UKIJ-DouyinSans |
-| 格式 | TrueType (.ttf) |
+| 格式 | TrueType & OpenType (.ttf & .otf) |
 | 每Em单位数 | 2048 |
 | 总字形数 | 8,817 |
 | Unicode 字符数 | 8,411 |
