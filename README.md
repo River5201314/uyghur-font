@@ -79,7 +79,7 @@
 /
 ├── README.md                    # 项目说明文件
 ├── index.html                   # 字体在线预览页面
-├── merged_ucn_font.ttf          # 合并后的字体文件
+├── UKIJTor-DouyinSans.ttf          # 合并后的字体文件
 └── LICENSE                      # 许可协议详情
 ```
 
@@ -89,22 +89,22 @@
 
 ```css
 @font-face {
-    font-family: 'UKIJ-DouyinSans';
-    src: url('merged_ucn_font.ttf') format('truetype');
+    font-family: 'UKIJTor-DouyinSans';
+    src: url('UKIJTor-DouyinSans.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
 
 body {
-    font-family: 'UKIJ-DouyinSans', sans-serif;
+    font-family: 'UKIJTor-DouyinSans', sans-serif;
 }
 ```
 
 ### 桌面端
 
-下载 `merged_ucn_font.ttf` 并安装到系统：
-- **Windows**：右键点击 `.ttf` 文件 > "安装"
-- **macOS**：双击 `.ttf` 文件 > "安装字体"
+下载 `UKIJTor-DouyinSans.ttf` 并安装到系统：
+- **Windows**：右键点击 `.ttf` & `.otf` 文件 > "安装"
+- **macOS**：双击 `.ttf` & `.otf` 文件 > "安装字体"
 - **Linux**：复制到 `~/.local/share/fonts/` 或 `~/.fonts/`
 
 ### 示例文本
