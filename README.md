@@ -1,10 +1,10 @@
-# UKIJ-DouyinSans 合并字体
+# UKIJTor-DouyinSans 合并字体
 
 将 **UKIJ Tor**（维吾尔文/阿拉伯文）与 **DouyinSans Bold**（中文/拉丁文）合并为一个 TrueType 字体文件，在单个字体中同时支持**维吾尔文**、**中文**和**英文**，并完整保留阿拉伯文上下文连词特性。
 
 ## 在线预览
 
-> 打开 [`index.html`](https://uifont.netlify.app/) 查看三种文字和混合排版的交互式预览效果。
+> 打开 [`预览页`](https://uifont.netlify.app/) 查看三种文字和混合排版的交互式预览效果。
 
 ## 字体信息
 
