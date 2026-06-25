@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UKIJ-DouyinSans - 合并字体预览</title>
+<style>
+@font-face {
+    font-family: 'UKIJTor-DouyinSans';
+    src: url('UKIJTor-DouyinSans.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'UKIJTor-DouyinSans', system-ui, -apple-system, sans-serif;
+    background: #0f0f11;
+    color: #e4e4e7;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Hero Section */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 60px 24px;
+    position: relative;
+    overflow: hidden;
+    background: radial-gradient(ellipse at 50% 0%, #1a1a2e 0%, #0f0f11 70%);
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: conic-gradient(from 0deg at 50% 50%, transparent 0deg, rgba(99, 102, 241, 0.03) 60deg, transparent 120deg, rgba(168, 85, 247, 0.03) 180deg, transparent 240deg, rgba(59, 130, 246, 0.03) 300deg, transparent 360deg);
+    animation: rotate 60s linear infinite;
+}
+
+@keyframes rotate {
+    to { transform: rotate(360deg); }
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 900px;
+}
+
+.hero-badge {
+    display: inline-block;
+    padding: 6px 16px;
+    border-radius: 100px;
+    font-size: 13px;
+    letter-spacing: 0.05em;
+    color: #a5b4fc;
+    background: rgba(99, 102, 241, 0.1);
+    border: 1px solid rgba(99, 102, 241, 0.2);
+    margin-bottom: 32px;
+    font-family: system-ui, sans-serif;
+}
+
+.hero h1 {
+    font-size: clamp(40px, 8vw, 80px);
+    font-weight: normal;
+    line-height: 1.1;
+    margin-bottom: 24px;
+    background: linear-gradient(135deg, #e4e4e7 0%, #a1a1aa 50%, #e4e4e7 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.hero-subtitle {
+    font-size: clamp(16px, 2.5vw, 20px);
+    color: #71717a;
+    max-width: 600px;
+    margin: 0 auto 48px;
+    font-family: system-ui, sans-serif;
+}
+
+.hero-samples {
+    display: flex;
+    gap: 32px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.hero-sample {
+    padding: 20px 28px;
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    background: rgba(255, 255, 255, 0.02);
+    backdrop-filter: blur(8px);
+}
+
+.hero-sample.ug {
+    direction: rtl;
+    font-size: 28px;
+    color: #c4b5fd;
+    min-width: 280px;
+}
+
+.hero-sample.zh {
+    font-size: 28px;
+    color: #93c5fd;
+}
+
+.hero-sample.en {
+    font-size: 28px;
+    color: #86efac;
+}
+
+.hero-scroll {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #3f3f46;
+    font-size: 13px;
+    font-family: system-ui, sans-serif;
+    animation: bounce 2s ease-in-out infinite;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(8px); }
+}
+
+/* Sections */
+.section {
+    padding: 100px 24px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.section-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 48px;
+}
+
+.section-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    flex-shrink: 0;
+}
+
+.section-icon.ug { background: rgba(196, 181, 253, 0.1); color: #c4b5fd; }
+.section-icon.zh { background: rgba(147, 197, 253, 0.1); color: #93c5fd; }
+.section-icon.en { background: rgba(134, 239, 172, 0.1); color: #86efac; }
+.section-icon.mix { background: rgba(253, 186, 116, 0.1); color: #fdba74; }
+
+.section-title {
+    font-size: 32px;
+    font-weight: normal;
+    color: #fafafa;
+}
+
+.section-desc {
+    font-size: 15px;
+    color: #52525b;
+    font-family: system-ui, sans-serif;
+}
+
+/* Card Grid */
+.card-grid {
+    display: grid;
+    gap: 24px;
+}
+
+.card {
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    background: rgba(255, 255, 255, 0.02);
+    padding: 36px;
+    transition: border-color 0.3s ease, background 0.3s ease;
+}
+
+.card:hover {
+    border-color: rgba(255, 255, 255, 0.12);
+    background: rgba(255, 255, 255, 0.04);
+}
+
+.card-meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 16px;
+}
+
+.card-label {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    color: #52525b;
+    font-family: system-ui, sans-serif;
+}
+
+.card-size {
+    font-size: 12px;
+    color: #3f3f46;
+    font-family: ui-monospace, monospace;
+}
+
+.card-text {
+    line-height: 1.8;
+    word-break: break-word;
+}
+
+.card-text.ug {
+    direction: rtl;
+    text-align: right;
+    color: #d4d4d8;
+}
+
+.card-text.zh {
+    color: #d4d4d8;
+}
+
+.card-text.en {
+    color: #d4d4d8;
+}
+
+/* Size variants */
+.xl { font-size: clamp(36px, 5vw, 56px); }
+.lg { font-size: clamp(24px, 3vw, 36px); }
+.md { font-size: clamp(18px, 2vw, 24px); }
+.sm { font-size: 16px; color: #a1a1aa !important; }
+
+/* Divider */
+.divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.06) 20%, rgba(255,255,255,0.06) 80%, transparent);
+    margin: 0 auto;
+    max-width: 1100px;
+}
+
+/* Mixed section */
+.mixed-card {
+    border-radius: 16px;
+    border: 1px solid rgba(253, 186, 116, 0.12);
+    background: rgba(253, 186, 116, 0.03);
+    padding: 40px;
+}
+
+.mixed-row {
+    padding: 16px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+}
+
+.mixed-row:last-child {
+    border-bottom: none;
+}
+
+.mixed-row.ug {
+    direction: rtl;
+    text-align: right;
+    color: #c4b5fd;
+    font-size: 24px;
+}
+
+.mixed-row.zh {
+    color: #93c5fd;
+    font-size: 24px;
+}
+
+.mixed-row.en {
+    color: #86efac;
+    font-size: 24px;
+}
+
+/* Info Section */
+.info-section {
+    padding: 80px 24px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 16px;
+}
+
+.info-item {
+    padding: 24px;
+    border-radius: 12px;
+    border: 1px solid rgba(255,255,255,0.06);
+    background: rgba(255,255,255,0.02);
+}
+
+.info-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    color: #52525b;
+    margin-bottom: 8px;
+    font-family: system-ui, sans-serif;
+}
+
+.info-value {
+    font-size: 22px;
+    color: #fafafa;
+}
+
+/* Footer */
+footer {
+    padding: 40px 24px;
+    text-align: center;
+    border-top: 1px solid rgba(255,255,255,0.04);
+}
+
+footer p {
+    font-size: 13px;
+    color: #3f3f46;
+    font-family: system-ui, sans-serif;
+    line-height: 1.8;
+}
+
+footer a {
+    color: #71717a;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(113,113,122,0.3);
+    transition: color 0.2s;
+}
+
+footer a:hover {
+    color: #a1a1aa;
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+    .hero-samples {
+        flex-direction: column;
+        align-items: center;
+    }
+    .card-grid {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
+</head>
+<body>
+
+<!-- Hero -->
+<section class="hero">
+    <div class="hero-content">
+        <div class="hero-badge">开源合并字体</div>
+        <h1>UKIJ-DouyinSans</h1>
+        <p class="hero-subtitle">维吾尔文 + 中文 + 英文，一个字体搞定。完整保留阿拉伯文连词排版特性。</p>
+        <div class="hero-samples">
+            <div class="hero-sample ug">ئۇيغۇر تىلى</div>
+            <div class="hero-sample zh">维吾尔中文字体</div>
+            <div class="hero-sample en">Three Scripts</div>
+        </div>
+    </div>
+    <div class="hero-scroll">向下滚动查看</div>
+</section>
+
+<div class="divider"></div>
+
+<!-- 维吾尔文 -->
+<section class="section">
+    <div class="section-header">
+        <div class="section-icon ug">Uy</div>
+        <div>
+            <div class="section-title">维吾尔文 / ئۇيغۇرچە</div>
+            <div class="section-desc">完整上下文连词支持：词首形、词中形、词尾形、独立形</div>
+        </div>
+    </div>
+    <div class="card-grid">
+        <div class="card">
+            <div class="card-meta">
+                <span class="card-label">标题字号</span>
+                <span class="card-size">56px</span>
+            </div>
+            <div class="card-text ug xl">ئۇيغۇر تىلىدا سۆزلەش</div>
+        </div>
+        <div class="card">
+            <div class="card-meta">
+                <span class="card-label">正文字号</span>
+                <span class="card-size">24px</span>
+            </div>
+            <div class="card-text ug lg">بۇ بىرلىك ئىشلەتكۈچىلەر ئۈچۈن تەييارلانغان خەت نۇسخىسىدۇر. ئۇيغۇرچە، خەنزۇچە ۋە ئېنگلىزچىنى قوللايدۇ.</div>
+        </div>
+        <div class="card">
+            <div class="card-meta">
+                <span class="card-label">注释字号</span>
+                <span class="card-size">16px</span>
+            </div>
+            <div class="card-text ug sm">بارلىق ئىنسانلار ئەركىن، ئىززەت-ھۆرمەت ۋە ھوقۇقتا باب-باراۋەر بولۇپ تۇغۇلغان. ئۇلار ئەقلى ۋە ۋىجدان بىلەن مۇئامىلىلەشتۈرۈلۈشى كېرەك.</div>
+        </div>
+    </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- 中文 -->
+<section class="section">
+    <div class="section-header">
+        <div class="section-icon zh">字</div>
+        <div>
+            <div class="section-title">中文</div>
+            <div class="section-desc">来自 DouyinSans 的 6,763 个汉字，风格简洁现代</div>
+        </div>
+    </div>
+    <div class="card-grid">
+        <div class="card">
+            <div class="card-meta">
+                <span class="card-label">标题字号</span>
+                <span class="card-size">56px</span>
+            </div>
+            <div class="card-text zh xl">记录美好生活</div>
+        </div>
+        <div class="card">
+            <div class="card-meta">
+                <span class="card-label">正文字号</span>
+                <span class="card-size">24px</span>
+            </div>
+            <div class="card-text zh lg">这是一个支持维吾尔文、中文和英文的合并字体。抖音Sans Bold 提供了现代感十足的中文字形，UKIJ Tor 提供了完整的维吾尔语连词支持。</div>
+        </div>
+        <div class="card">
+            <div class="card-meta">
+                <span class="card-label">注释字号</span>
+                <span class="card-size">16px</span>
+            </div>
+            <div class="card-text zh sm">本字体支持简体中文、繁体中文、日文汉字等多种CJK字符集，适用于多语言混合排版场景，覆盖日常使用的绝大部分汉字。</div>
+        </div>
+    </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- 英文 -->
+<section class="section">
+    <div class="section-header">
+        <div class="section-icon en">Aa</div>
+        <div>
+            <div class="section-title">英文 / Latin</div>
+            <div class="section-desc">覆盖基础拉丁文、拉丁文扩展和西里尔文</div>
+        </div>
+    </div>
+    <div class="card-grid">
+        <div class="card">
+            <div class="card-meta">
+                <span class="card-label">标题字号</span>
+                <span class="card-size">56px</span>
+            </div>
+            <div class="card-text en xl">Quick Brown Fox</div>
+        </div>
+        <div class="card">
+            <div class="card-meta">
+                <span class="card-label">正文字号</span>
+                <span class="card-size">24px</span>
+            </div>
+            <div class="card-text en lg">This merged font supports Uyghur, Chinese, and Latin scripts. It preserves all Arabic shaping features including contextual alternates, initial, medial, final, and isolated forms.</div>
+        </div>
+        <div class="card">
+            <div class="card-meta">
+                <span class="card-label">注释字号</span>
+                <span class="card-size">16px</span>
+            </div>
+            <div class="card-text en sm">Typography is the art and technique of arranging type to make written language legible, readable, and appealing when displayed. ABCDEFGHIJKLMNOPQRSTUVWXYZ 0123456789</div>
+        </div>
+    </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- 混合排版 -->
+<section class="section">
+    <div class="section-header">
+        <div class="section-icon mix">三</div>
+        <div>
+            <div class="section-title">混合排版</div>
+            <div class="section-desc">三种文字在同一字体中并肩使用</div>
+        </div>
+    </div>
+    <div class="mixed-card">
+        <div class="mixed-row ug">بۇ «UKIJ-DouyinSans» ناملىق خەت نۇسخىسىدۇر.</div>
+        <div class="mixed-row zh">这是 "UKIJ-DouyinSans" 合并字体。</div>
+        <div class="mixed-row en">A merged font for Uyghur, Chinese, and English.</div>
+    </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- 技术参数 -->
+<section class="info-section">
+    <div class="section-header" style="margin-bottom:32px">
+        <div style="font-size:32px;color:#fafafa">技术参数</div>
+    </div>
+    <div class="info-grid">
+        <div class="info-item">
+            <div class="info-label">总字形数</div>
+            <div class="info-value">8,817</div>
+        </div>
+        <div class="info-item">
+            <div class="info-label">Unicode 字符数</div>
+            <div class="info-value">8,411</div>
+        </div>
+        <div class="info-item">
+            <div class="info-label">GSUB 特性</div>
+            <div class="info-value">14</div>
+        </div>
+        <div class="info-item">
+            <div class="info-label">GDEF 字形类</div>
+            <div class="info-value">999</div>
+        </div>
+        <div class="info-item">
+            <div class="info-label">格式</div>
+            <div class="info-value">TrueType & OpenType</div>
+        </div>
+        <div class="info-item">
+            <div class="info-label">每Em单位数</div>
+            <div class="info-value">2,048</div>
+        </div>
+    </div>
+</section>
+
+<!-- 页脚 -->
+<footer>
+    <p>
+        字体来源：
+        <a href="https://github.com/ukij/fonts-for-uyghur-arabic-script" target="_blank">UKIJ Tor</a>（LGPL/OFL）&
+        <a href="https://github.com/bytedance/fonts" target="_blank">DouyinSans</a>（SIL OFL 1.1）
+    </p>
+    <p style="margin-top:8px">
+        保留字体名 "Douyin"、"抖音"、"抖音美好" 属于字节跳动所有，本合并字体未使用这些名称。
+    </p>
+</footer>
+
+</body>
+</html>
